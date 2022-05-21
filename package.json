@@ -1,0 +1,34 @@
+{
+  "name": "app_name",
+  "version": "0.0.1",
+  "description": "App description",
+  "scripts": {
+    "build": "npm-run-all --parallel build:*",
+    "build:server": "node ./esbuild/server.build-config.js",
+    "build:css": "npx tailwindcss -i ./src/client/index.css -o ./build/public/static/tailwind.css",
+    "build:client": "node ./esbuild/client.build-config.js",
+    "dev:client": "node ./esbuild/client.dev-config.js",
+    "dev:css": "npx tailwindcss -i ./src/client/index.css -o ./build/public/static/tailwind.css --watch",
+    "dev:server": "node ./esbuild/server.dev-config.js",
+    "dev:server-watch": "nodemon ./build/index.js --ignore src/client/ --ignore build/public/",
+    "start": "npm-run-all --parallel dev:*",
+    "serve": "node ./build/index.js"
+  },
+  "author": "ar2emis",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "dotenv": "^16.0.1",
+    "esbuild": "^0.14.39",
+    "fs-extra": "^10.1.0",
+    "nodemon": "^2.0.16",
+    "npm-run-all": "^4.1.5",
+    "servor": "^4.0.2",
+    "tailwindcss": "^3.0.24"
+  }
+}
